@@ -25,7 +25,7 @@ import androidx.room.Update
 @Dao
 interface SleepDatabaseDao {
     @Insert
-    fun insert(night: SleepNight)
+    fun insert(night: SleepNight) //
 
     @Update
     fun update(night: SleepNight)

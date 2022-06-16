@@ -23,6 +23,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.example.android.trackmysleepquality.database.SleepDatabase
 import com.example.android.trackmysleepquality.database.SleepDatabaseDao
 import com.example.android.trackmysleepquality.database.SleepNight
+import org.junit.Assert.assertThat
 import org.junit.Assert.assertEquals
 import org.junit.After
 import org.junit.Before
@@ -74,10 +75,24 @@ class SleepDatabaseTest {
         sleepDao.getAllNights().observeOnce {
             assertEquals(0, it.size)
         }
-/*        val night = SleepNight(1, 100, 100, 1)
+        val night = SleepNight(1, 100, 100, 1)
         sleepDao.insert(night)
+        sleepDao.getAllNights().observeOnce {
+            assertEquals(1, it.size)
+        }
         val newNight = night.copy(nightId = 2)
-        sleepDao.update(newNight)
+        sleepDao.insert(newNight)
+//        sleepDao.update(newNight)
+        val nights = SleepNight(2, 100, 100, 1)
+        sleepDao.getAllNights().observeOnce {
+            assertEquals(2, it.size)
+        }
+
+/*              sleepDao.getAllNights().observeOnce {
+            assertEquals(2, nights.nightId)
+            assertEquals(1, it.size)
+        }
+
         val nights = sleepDao.getAllNights().value
         val TAG = "Value of 'nights' -- "
         Log.e(TAG, "updateNight: $nights")
